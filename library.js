@@ -47,4 +47,12 @@ function displayBooks() {
   });
 }
 
+const addBookButton = document.querySelector('#add_book_button');
+addBookButton.addEventListener('click', showBookForm);
+
+function showBookForm() {
+  const form = document.querySelector('.form');
+  form.classList.toggle('hidden');
+}
+
 displayBooks();

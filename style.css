@@ -9,3 +9,7 @@ html {
 body {
   font-family: 'Gentium Book Basic', serif;
 }
+
+.hidden {
+  display: none;
+}
