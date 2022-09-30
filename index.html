@@ -14,6 +14,33 @@
 
 <div class="container">
   <main>
+    <button type="button" id="add_book_button">Add New Book</button>
+    <div class="form">
+      <form id="add_book_form" action="">
+        <fieldset>
+          <legend>Add a New Book to Your Library</legend>
+          <div class="field">
+            <label for="title">Title</label>
+            <input type="text" id="title" name="title" placeholder="Of Mice and Men">
+          </div>
+          <div class="field">
+            <label for="author">Author</label>
+            <input type="text" id="author" name="author" placeholder="John Steinbeck">
+          </div>
+          <div class="field">
+            <label for="page_count">Page Count</label>
+            <input type="number" id="page_count" name="page_count">
+          </div>
+          <div class="field">
+            <label for="is_read">I've Read This</label>
+            <input type="checkbox" id="is_reead" name="is_read">
+          </div>
+          <div class="field">
+            <input type="submit">
+          </div>
+        </fieldset>
+      </form>
+    </div>
     <ul id="library" class="library"></ul>
   </main>
 </div>
