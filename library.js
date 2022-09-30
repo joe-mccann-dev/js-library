@@ -34,22 +34,16 @@ const book2 = new Book(
 addBookToLibrary(book1);
 addBookToLibrary(book2)
 
-console.log(book1)
-console.log(book2)
-
-
 function displayBooks() {
-  list = document.querySelector('#library')
+  const list = document.querySelector('#library');
   myLibrary.forEach((book) => {
-    const bookList = document.createElement('li');
-    list.appendChild(bookList)
-    const subList = document.createElement('ul');
-    bookList.appendChild(subList);
+    const listItem = document.createElement('li');
     [book.title, book.author, book.pageCount, book.read].forEach((attr) => {
-      const detail = document.createElement('li');
-      detail.appendChild(document.createTextNode(attr))
-      subList.appendChild(detail);
-    })
+      const attribute = document.createElement('p');
+      attribute.textContent = attr
+      listItem.appendChild(attribute);
+    });
+    list.appendChild(listItem);
   });
 }
 
