@@ -41,7 +41,11 @@ function addBookToLibrary(e) {
     isRead.checked
   )
 
-  if (!book.title) { return; }
+  if (library.some((b) => b.title.toLowerCase() === book.title.toLowerCase())) {
+    alert("You've already added that book title to your Library.");
+    return;
+  }
+
   // start with a fresh array instead of tacking onto long list of undefined
   // this way, array always represents actual state of library
   if (library.every((book) => book === undefined)) { library = [];}
