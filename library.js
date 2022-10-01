@@ -59,7 +59,7 @@ function displayBook(book, index) {
     book.read
   ].forEach((attr) => {
     const element = document.createElement('p');
-    if (attr === book.read) { element.setAttribute('id', `read-${index}`) }
+    if (attr === book.read) { element.setAttribute('id', `readStatus-${index}`) }
     element.textContent = attr
     listItem.appendChild(element);
   });
@@ -74,7 +74,7 @@ function displayBook(book, index) {
 
   const toggleReadButton = document.createElement('button');
   toggleReadButton.setAttribute('class', 'toggle_read_button');
-  toggleReadButton.setAttribute('id', `mark-${listItem.dataset.bookId}`);
+  toggleReadButton.setAttribute('id', `readButton-${listItem.dataset.bookId}`);
   toggleReadButton.textContent = 'toggle read'
   toggleReadButton.addEventListener('click', toggleRead);
   listItem.appendChild(toggleReadButton);
@@ -85,14 +85,16 @@ function displayBook(book, index) {
 function removeBook(e) {
   const target = e.target
   const listItem = target.parentElement;
-  const bookId = target.dataset.bookId;
+  const bookId = listItem.dataset.bookId;
   delete library[bookId]
   listItem.remove();
 }
 
 function toggleRead(e) {
+  // need book id to modify book object ( book.toggleRead())
   const bookId = e.target.id.split('-')[1];
-  const readStatusElement = document.querySelector(`#read-${bookId}`);
+  // need to select "read" or "unread" paragraph text in order to modify
+  const readStatusElement = document.querySelector(`#readStatus-${bookId}`);
   const book = library[bookId];
   book.toggleRead();
   const currentStatus = readStatusElement.textContent;
