@@ -3,7 +3,7 @@ function Book(
   title,
   author,
   pageCount,
-  read = 'unread'
+  read = false
 ) {
   this.title = title;
   this.author = author;
@@ -12,7 +12,7 @@ function Book(
 }
 
 Book.prototype.toggleRead = function () {
-  this.read = this.read === 'read' ? 'unread' : 'read'
+  this.read = this.read ? false : true
 }
 
 const addBookButton = document.querySelector('#add_book_button');
@@ -33,7 +33,7 @@ function addBookToLibrary(e) {
   const title = document.querySelector('#title').value
   const author = document.querySelector('#author').value
   const pageCount = document.querySelector('#page_count').value
-  const isRead = document.querySelector('#is_read').checked ? 'read' : 'unread'
+  const isRead = document.querySelector('#is_read').checked
 
   const book = new Book(
     title,
@@ -52,17 +52,16 @@ const list = document.querySelector('#library');
 function displayBook(book, index) {
   const listItem = document.createElement('li');
 
-  [
-    book.title,
-    book.author,
-    book.pageCount,
-    book.read
-  ].forEach((attr) => {
-    const element = document.createElement('p');
-    if (attr === book.read) { element.setAttribute('id', `readStatus-${index}`) }
-    element.textContent = attr
-    listItem.appendChild(element);
-  });
+  const title = document.createElement('h3');
+  title.textContent = book.title;
+  const author = document.createElement('p');
+  author.textContent = book.author;
+  const pageCount = document.createElement('p');
+  pageCount.textContent = book.pageCount;
+  const readStatus = document.createElement('p');
+  readStatus.textContent = setReadStatus(book.read);
+  readStatus.setAttribute('id', `readStatus-${index}`);
+  [title, author, pageCount, readStatus].forEach((el) => listItem.appendChild(el));
 
   listItem.dataset.bookId = index
 
@@ -96,6 +95,10 @@ function toggleRead(e) {
   // need to select "read" or "unread" paragraph text in order to modify
   const readStatusElement = document.querySelector(`#readStatus-${bookId}`);
   const book = library[bookId];
-  readStatusElement.textContent = book.read === 'read' ? 'unread' : 'read'
   book.toggleRead();
+  readStatusElement.textContent = setReadStatus(book.read)
+}
+
+function setReadStatus(read) {
+  return read ? "I've read this." : "Haven't read yet."
 }
