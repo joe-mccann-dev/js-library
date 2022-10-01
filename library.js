@@ -96,7 +96,6 @@ function toggleRead(e) {
   // need to select "read" or "unread" paragraph text in order to modify
   const readStatusElement = document.querySelector(`#readStatus-${bookId}`);
   const book = library[bookId];
+  readStatusElement.textContent = book.read === 'read' ? 'unread' : 'read'
   book.toggleRead();
-  const currentStatus = readStatusElement.textContent;
-  readStatusElement.textContent = currentStatus === 'read' ? 'unread' : 'read'
 }
