@@ -126,9 +126,9 @@ function clearForm(inputs, checkbox) {
 
 // FOR TESTING PURPOSES
 
-const test1 = new Book('Of Mice and Men', 'John Steinbeck', '200', true);
-const test2 = new Book('Lord of the Rings', 'J.R.R. Tolkien', '520', true);
-const test3 = new Book('Harry Potter and the Chamber of Secrets', 'J.K. Rowling', '402', false);
-library = [test1, test2, test3]
+// const test1 = new Book('Of Mice and Men', 'John Steinbeck', '200', true);
+// const test2 = new Book('Lord of the Rings', 'J.R.R. Tolkien', '520', true);
+// const test3 = new Book('Harry Potter and the Chamber of Secrets', 'J.K. Rowling', '402', false);
+// library = [test1, test2, test3]
 
-library.forEach((b, i) => displayBook(b, i));
+// library.forEach((b, i) => displayBook(b, i));
