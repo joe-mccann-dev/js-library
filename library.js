@@ -70,33 +70,32 @@ function displayBook(book, index) {
   removeButton.setAttribute('class', 'remove_button');
   removeButton.setAttribute('id', `remove-${listItem.dataset.bookId}`);
   removeButton.textContent = 'remove book'
+  removeButton.addEventListener('click', removeBook);
   listItem.appendChild(removeButton);
 
   const toggleReadButton = document.createElement('button');
   toggleReadButton.setAttribute('class', 'toggle_read_button');
   toggleReadButton.setAttribute('id', `mark-${listItem.dataset.bookId}`);
   toggleReadButton.textContent = 'toggle read'
+  toggleReadButton.addEventListener('click', toggleRead);
   listItem.appendChild(toggleReadButton);
 
   list.appendChild(listItem);
 }
 
-list.addEventListener('click', (e) => {
+function removeBook(e) {
   const target = e.target
+  const listItem = target.parentElement;
+  const bookId = target.id.split('-')[1];
+  delete library[bookId]
+  listItem.remove();
+}
 
-  if (target.className === 'remove_button') {
-    const listItem = target.parentElement;
-    const bookId = target.id.split('-')[1];
-    delete library[bookId]
-    listItem.remove();
-  }
-
-  if (target.className === 'toggle_read_button') {
-    const bookId = target.id.split('-')[1];
-    const readStatusElement = document.querySelector(`#read-${bookId}`);
-    const book = library[bookId];
-    book.toggleRead()
-    const currentStatus = readStatusElement.textContent;
-    readStatusElement.textContent = currentStatus === 'read' ? 'unread' : 'read'
-  }
-});
+function toggleRead(e) {
+  const bookId = e.target.id.split('-')[1];
+  const readStatusElement = document.querySelector(`#read-${bookId}`);
+  const book = library[bookId];
+  book.toggleRead();
+  const currentStatus = readStatusElement.textContent;
+  readStatusElement.textContent = currentStatus === 'read' ? 'unread' : 'read'
+}
