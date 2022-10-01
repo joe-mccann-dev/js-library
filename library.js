@@ -50,8 +50,8 @@ function addBookToLibrary(e) {
   // this way, array always represents actual state of library
   if (library.every((book) => book === undefined)) { library = [];}
   library.push(book)
-  displayBook(book, library.length - 1)
-  clearForm([title, author, pageCount], isRead)
+  displayBook(book, library.length - 1);
+  clearForm([title, author, pageCount], isRead);
 }
 
 const list = document.querySelector('#library');
@@ -73,14 +73,14 @@ function displayBook(book, index) {
 
   const removeButton = document.createElement('button');
   removeButton.setAttribute('class', 'remove_button');
-  removeButton.textContent = 'remove book'
+  removeButton.textContent = 'remove book';
   removeButton.addEventListener('click', removeBook);
   listItem.appendChild(removeButton);
 
   const toggleReadButton = document.createElement('button');
   toggleReadButton.setAttribute('class', 'toggle_read_button');
   toggleReadButton.setAttribute('id', `readButton-${listItem.dataset.bookId}`);
-  toggleReadButton.textContent = 'toggle read'
+  toggleReadButton.textContent = 'toggle read';
   toggleReadButton.addEventListener('click', toggleRead);
   listItem.appendChild(toggleReadButton);
 
@@ -89,10 +89,10 @@ function displayBook(book, index) {
 }
 
 function removeBook(e) {
-  const target = e.target
+  const target = e.target;
   const listItem = target.parentElement;
   const bookId = listItem.dataset.bookId;
-  delete library[bookId]
+  delete library[bookId];
   listItem.remove();
 }
 
@@ -103,11 +103,11 @@ function toggleRead(e) {
   const readStatusElement = document.querySelector(`#readStatus-${bookId}`);
   const book = library[bookId];
   book.toggleRead();
-  readStatusElement.textContent = setReadStatus(book.read)
+  readStatusElement.textContent = setReadStatus(book.read);
 }
 
 function setReadStatus(read) {
-  return read ? "I've read this." : "Haven't read yet."
+  return read ? "I've read this." : "Haven't read yet.";
 }
 
 function clearForm(inputs, checkbox) {
