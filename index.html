@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,13 @@
   <link href="style.css" rel="stylesheet">
   <title>Library App</title>
 </head>
-<body>
-<header>
-  <h1>Library App</h1>
-</header>
 
-<div class="container">
-  <main>
-    <button type="button" id="add_book_button">Add New Book</button>
+<body>
+  <div class="container">
+    <header>
+      <h1>My Library</h1>
+      <button type="button" class="add_book_button" id="add_book_button">Enter New Book Info</button>
+    </header>
     <div class="form hidden">
       <form id="add_book_form">
         <fieldset>
@@ -36,14 +36,14 @@
             <input type="checkbox" id="is_read" name="is_read">
           </div>
           <div class="field">
-            <input id="submit_button"type="submit">
+            <button type="submit" class="submit_button" id="submit_button">Add New Book</button>
           </div>
         </fieldset>
       </form>
     </div>
     <ul id="library" class="library"></ul>
-  </main>
-</div>
-<script src="library.js"></script>
+  </div>
+  <script src="library.js"></script>
 </body>
+
 </html>

@@ -1,5 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Gentium+Book+Basic&display=swap');
 
+
+/* colors from https://tailwindcss.com/docs/customizing-colors */
+:root {
+  --background: #f5f5f5;
+  --form: #e5e5e5;
+  --text: #262626;
+  --indigo-300: #a5b4fc;
+  --teal-300: #5eead4;
+  --red-300: #fca5a5;
+}
+
 html {
   box-sizing: border-box;
   margin: 0;
@@ -8,8 +19,89 @@ html {
 
 body {
   font-family: 'Gentium Book Basic', serif;
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
 .hidden {
   display: none;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  background-color: var(--form);
+  padding: 12px;
+}
+
+fieldset {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 16px;
+}
+
+
+.field {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+input {
+  height: 24px
+}
+
+ul {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  max-width: 1200px;
+  flex-wrap: wrap;
+}
+
+li {
+  width: 320px;
+  height: auto;
+  border: solid 2px var(--indigo-300);
+  background-color: var(--form);
+  padding: 24px;
+}
+
+button {
+  font-weight: bold;
+  padding: 4px 16px;
+  margin-right: 4px;
+  height: 32px;
+}
+
+.add_book_button, .toggle_read_button {
+  background-color: var(--indigo-300);
+}
+
+.remove_button {
+  background-color: var(--red-300);
+}
+
+.submit_button {
+  font-weight: bold;
+  background-color: var(--teal-300);
+  margin: 0 auto;
+}
+
+.read_status {
+  font-style: italic;
 }

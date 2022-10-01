@@ -61,10 +61,11 @@ function displayBook(book, index) {
   const title = document.createElement('h3');
   title.textContent = book.title;
   const author = document.createElement('p');
-  author.textContent = `author: ${book.author}`;
+  author.textContent = `by ${book.author}`;
   const pageCount = document.createElement('p');
-  pageCount.textContent = `page count: ${book.pageCount}`;
+  pageCount.textContent = `${book.pageCount} pages`;
   const readStatus = document.createElement('p');
+  readStatus.setAttribute('class', 'read_status')
   readStatus.textContent = setReadStatus(book.read);
   readStatus.setAttribute('id', `readStatus-${index}`);
   [title, author, pageCount, readStatus].forEach((el) => listItem.appendChild(el));
@@ -73,7 +74,7 @@ function displayBook(book, index) {
 
   const removeButton = document.createElement('button');
   removeButton.setAttribute('class', 'remove_button');
-  removeButton.textContent = 'remove book';
+  removeButton.textContent = 'remove';
   removeButton.addEventListener('click', removeBook);
   listItem.appendChild(removeButton);
 
@@ -109,12 +110,12 @@ function toggleRead(e) {
 }
 
 function setReadStatus(read) {
-  return read ? "I've read this." : "Haven't read yet.";
+  return read ? "I've read this." : "Not read";
 }
 
 function setReadButtonText(read, button) {
-  if (read && button) { return 'Mark Unread'; }
-  if (!read && button) { return 'Mark Read'; }
+  if (read && button) { return 'mark unread'; }
+  if (!read && button) { return 'mark as read'; }
 }
 
 function clearForm(inputs, checkbox) {
