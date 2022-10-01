@@ -61,9 +61,9 @@ function displayBook(book, index) {
   const title = document.createElement('h3');
   title.textContent = book.title;
   const author = document.createElement('p');
-  author.textContent = book.author;
+  author.textContent = `author: ${book.author}`;
   const pageCount = document.createElement('p');
-  pageCount.textContent = book.pageCount;
+  pageCount.textContent = `page count: ${book.pageCount}`;
   const readStatus = document.createElement('p');
   readStatus.textContent = setReadStatus(book.read);
   readStatus.setAttribute('id', `readStatus-${index}`);
@@ -114,3 +114,13 @@ function clearForm(inputs, checkbox) {
   checkbox.checked = false;
   inputs.forEach((input) => input.value = '');
 }
+
+
+// FOR TESTING PURPOSES
+
+const test1 = new Book('Of Mice and Men', 'John Steinbeck', '200', true);
+const test2 = new Book('Lord of the Rings', 'J.R.R. Tolkien', '520', true);
+const test3 = new Book('Harry Potter and the Chamber of Secrets', 'J.K. Rowling', '402', false);
+library = [test1, test2, test3]
+
+library.forEach((b, i) => displayBook(b, i));
