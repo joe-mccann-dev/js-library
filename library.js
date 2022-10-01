@@ -30,22 +30,22 @@ let library = [];
 function addBookToLibrary(e) {
   e.preventDefault();
 
-  const title = document.querySelector('#title').value
-  const author = document.querySelector('#author').value
-  const pageCount = document.querySelector('#page_count').value
-  const isRead = document.querySelector('#is_read').checked
-
+  const title = document.querySelector('#title');
+  const author = document.querySelector('#author');
+  const pageCount = document.querySelector('#page_count');
+  const isRead = document.querySelector('#is_read');
   const book = new Book(
-    title,
-    author,
-    pageCount,
-    isRead
+    title.value,
+    author.value,
+    pageCount.value,
+    isRead.checked
   )
   // start with a fresh array instead of tacking onto long list of undefined
   // this way, array always represents actual state of library
   if (library.every((book) => book === undefined)) { library = [];}
   library.push(book)
   displayBook(book, library.length - 1)
+  clearForm([title, author, pageCount], isRead)
 }
 
 const list = document.querySelector('#library');
@@ -79,6 +79,7 @@ function displayBook(book, index) {
   listItem.appendChild(toggleReadButton);
 
   list.appendChild(listItem);
+  
 }
 
 function removeBook(e) {
@@ -101,4 +102,9 @@ function toggleRead(e) {
 
 function setReadStatus(read) {
   return read ? "I've read this." : "Haven't read yet."
+}
+
+function clearForm(inputs, checkbox) {
+  checkbox.checked = false;
+  inputs.forEach((input) => input.value = '');
 }
