@@ -68,7 +68,6 @@ function displayBook(book, index) {
 
   const removeButton = document.createElement('button');
   removeButton.setAttribute('class', 'remove_button');
-  removeButton.setAttribute('id', `remove-${listItem.dataset.bookId}`);
   removeButton.textContent = 'remove book'
   removeButton.addEventListener('click', removeBook);
   listItem.appendChild(removeButton);
@@ -86,7 +85,7 @@ function displayBook(book, index) {
 function removeBook(e) {
   const target = e.target
   const listItem = target.parentElement;
-  const bookId = target.id.split('-')[1];
+  const bookId = target.dataset.bookId;
   delete library[bookId]
   listItem.remove();
 }
