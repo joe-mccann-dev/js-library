@@ -40,6 +40,8 @@ function addBookToLibrary(e) {
     pageCount.value,
     isRead.checked
   )
+
+  if (!book.title) { return; }
   // start with a fresh array instead of tacking onto long list of undefined
   // this way, array always represents actual state of library
   if (library.every((book) => book === undefined)) { library = [];}
