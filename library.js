@@ -80,7 +80,7 @@ function displayBook(book, index) {
   const toggleReadButton = document.createElement('button');
   toggleReadButton.setAttribute('class', 'toggle_read_button');
   toggleReadButton.setAttribute('id', `readButton-${listItem.dataset.bookId}`);
-  toggleReadButton.textContent = 'toggle read';
+  toggleReadButton.textContent = setReadButtonText(book.read, toggleReadButton);
   toggleReadButton.addEventListener('click', toggleRead);
   listItem.appendChild(toggleReadButton);
 
@@ -97,17 +97,24 @@ function removeBook(e) {
 }
 
 function toggleRead(e) {
+  const readButton = e.target
   // need book id to modify book object ( book.toggleRead())
-  const bookId = e.target.id.split('-')[1];
+  const bookId = readButton.id.split('-')[1];
   // need to select "read" or "unread" paragraph text in order to modify
   const readStatusElement = document.querySelector(`#readStatus-${bookId}`);
   const book = library[bookId];
   book.toggleRead();
   readStatusElement.textContent = setReadStatus(book.read);
+  readButton.textContent = setReadButtonText(book.read, readButton)
 }
 
 function setReadStatus(read) {
   return read ? "I've read this." : "Haven't read yet.";
+}
+
+function setReadButtonText(read, button) {
+  if (read && button) { return 'Mark Unread'; }
+  if (!read && button) { return 'Mark Read'; }
 }
 
 function clearForm(inputs, checkbox) {
