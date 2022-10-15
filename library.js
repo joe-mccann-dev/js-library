@@ -11,6 +11,8 @@ class Book {
       this.pageCount = pageCount;
       this.read = read;
     }
+
+    toggleRead = () => this.read = this.read ? false : true;
 }
 
 const addBookButton = document.querySelector('#add_book_button');
