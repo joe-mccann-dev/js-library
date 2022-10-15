@@ -1,18 +1,16 @@
 
-function Book(
-  title,
-  author,
-  pageCount,
-  read = false
-) {
-  this.title = title;
-  this.author = author;
-  this.pageCount = pageCount;
-  this.read = read
-}
-
-Book.prototype.toggleRead = function () {
-  this.read = this.read ? false : true
+class Book {
+  constructor(
+    title,
+    author,
+    pageCount,
+    read = false
+    ) {
+      this.title = title;
+      this.author = author;
+      this.pageCount = pageCount;
+      this.read = read;
+    }
 }
 
 const addBookButton = document.querySelector('#add_book_button');
